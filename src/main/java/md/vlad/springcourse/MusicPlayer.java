@@ -1,17 +1,32 @@
 package md.vlad.springcourse;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class MusicPlayer {
-    private List<Music> musicList = new ArrayList<>();
+    // dependency injection via field
+//    @Autowired
+//    private Music music;
 
     private String name;
     private int volume;
 
-    public MusicPlayer() {
+    private ClassicalMusic classicalMusic;
+    private RockMusic rockMusic;
+
+    @Autowired
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
     }
+
+    // dependency injection via constructor
+    //    @Autowired
+//    public MusicPlayer(Music music) {
+//        this.music = music;
+//    }
 
     public String getName() {
         return name;
@@ -29,18 +44,14 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
+    // dependency injection via setter
+    //    @Autowired
+//    public void setMusic(Music music) {
+//        this.music = music;
+//    }
+
     // IoC
-    public MusicPlayer(List<Music> musicList) {
-        this.musicList = new ArrayList<>(musicList);
-    }
-
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-    public void playMusic(){
-        for(Music music : musicList) {
-            System.out.println("Playing : " + music.getSong());
-        }
+    public String playMusic() {
+        return new StringBuilder("Playing : ").append(classicalMusic.getSong()).append(" ; ").append(rockMusic.getSong()).toString();
     }
 }
