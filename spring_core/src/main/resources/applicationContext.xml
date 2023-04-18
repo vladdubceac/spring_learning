@@ -8,35 +8,7 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="md.vlad.springcourse" />
-    <!--<context:property-placeholder location="classpath:musicPlayer.properties" />-->
 
-    <!--<bean id="musicBean" class="md.vlad.springcourse.ClassicalMusic" init-method="doMyInit" destroy-method="doMyDestroy"-->
-    <!--factory-method="getClassicalMusic">-->
-    <!--</bean>-->
+    <context:property-placeholder location="classpath:musicPlayer.properties" />
 
-    <!--<bean id="classicalMusicBean" class="md.vlad.springcourse.ClassicalMusic">-->
-        <!--<property name="song" value="${music.classical.song}" />-->
-    <!--</bean>-->
-
-    <!--<bean id="rockMusicBean" class="md.vlad.springcourse.RockMusic">-->
-        <!--<property name="song" value="${music.rock.song}" />-->
-    <!--</bean>-->
-
-    <!--<bean id="popMusicBean" class="md.vlad.springcourse.PopMusic">-->
-        <!--<property name="song" value="${music.pop.song}" />-->
-    <!--</bean>-->
-
-    <!--<bean id="musicPlayer" class="md.vlad.springcourse.MusicPlayer" scope="prototype">-->
-        <!--&lt;!&ndash;<constructor-arg ref="musicBean" /> &ndash;&gt;-->
-        <!--<property name="musicList" >-->
-            <!--<list value-type="md.vlad.springcourse.Music">-->
-                <!--<ref bean="classicalMusicBean" />-->
-                <!--<ref bean="rockMusicBean" />-->
-                <!--<ref bean="popMusicBean" />-->
-            <!--</list>-->
-        <!--</property>-->
-
-        <!--<property name="name" value="${musicPlayer.name}" />-->
-        <!--<property name="volume" value="${musicPlayer.volume}" />-->
-     <!--</bean>-->
 </beans>

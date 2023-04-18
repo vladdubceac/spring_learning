@@ -2,6 +2,7 @@ package md.vlad.springcourse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
@@ -13,7 +14,10 @@ public class MusicPlayer {
     private Music rockMusic;
     private Music classicalMusic;
 
+    @Value("${musicPlayer.name}")
     private String name;
+
+    @Value("${musicPlayer.volume}")
     private int volume;
 
     @Autowired
