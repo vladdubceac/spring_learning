@@ -1,6 +1,6 @@
 package md.vlad.springcourse;
 
-public class ClassicalMusic implements Music {
+public class PopMusic implements Music{
     private String song;
 
     public void setSong(String song) {
@@ -9,6 +9,6 @@ public class ClassicalMusic implements Music {
 
     @Override
     public String getSong() {
-        return song != null ? song : "Hungarian Rhapsody";
+        return song!=null ? song : "Billie Jean";
     }
 }
