@@ -2,9 +2,18 @@ package md.vlad.springcourse;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class ClassicalMusic implements Music {
-    private String song;
+    private List<String> songs = new ArrayList<>();
+
+    {
+        songs.add("Hungarian Rhapsody");
+        songs.add("Symphony no. 5 in C Minor, op. 67");
+        songs.add("Night on Bald Mountain");
+    }
 
     private ClassicalMusic() {
     }
@@ -22,11 +31,7 @@ public class ClassicalMusic implements Music {
     }
 
     @Override
-    public String getSong() {
-        return song != null ? song : "Hungarian Rhapsody";
-    }
-
-    public void setSong(String song) {
-        this.song = song;
+    public List<String> getSongs() {
+        return songs;
     }
 }

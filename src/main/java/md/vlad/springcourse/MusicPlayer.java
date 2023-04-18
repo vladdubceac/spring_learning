@@ -1,25 +1,25 @@
 package md.vlad.springcourse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import java.util.Random;
 
 
 @Component
 public class MusicPlayer {
     // dependency injection via field
-//    @Autowired
-//    private Music music;
+    private Music rockMusic;
+    private Music classicalMusic;
 
     private String name;
     private int volume;
 
-    private ClassicalMusic classicalMusic;
-    private RockMusic rockMusic;
-
     @Autowired
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
-        this.classicalMusic = classicalMusic;
+    public MusicPlayer(@Qualifier("rockMusic") Music rockMusic, @Qualifier("classicalMusic") Music classicalMusic) {
         this.rockMusic = rockMusic;
+        this.classicalMusic = classicalMusic;
     }
 
     // dependency injection via constructor
@@ -51,7 +51,17 @@ public class MusicPlayer {
 //    }
 
     // IoC
-    public String playMusic() {
-        return new StringBuilder("Playing : ").append(classicalMusic.getSong()).append(" ; ").append(rockMusic.getSong()).toString();
+    public void playMusic(MusicGenre musicGenre) {
+        int randomNumber = new Random().nextInt(3);
+        String song;
+        if (MusicGenre.CLASSICAL == musicGenre) {
+            song = classicalMusic.getSongs().get(randomNumber);
+        } else if (MusicGenre.ROCK == musicGenre) {
+            song = rockMusic.getSongs().get(randomNumber);
+        } else {
+            System.out.println("Song not found for given genre : " + musicGenre);
+            return;
+        }
+        System.out.println("Playing : " + song);
     }
 }

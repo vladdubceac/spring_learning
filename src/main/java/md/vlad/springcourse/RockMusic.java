@@ -2,16 +2,22 @@ package md.vlad.springcourse;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class RockMusic implements Music {
-    private String song;
+    private List<String> songs = new ArrayList<>();
 
-    public void setSong(String song) {
-        this.song = song;
+    {
+        songs.add("Wind cries Mary");
+        songs.add("Paint it black");
+        songs.add("Can't seem to make you mine");
     }
 
+
     @Override
-    public String getSong() {
-        return song!=null ? song : "Wind cries Mary";
+    public List<String> getSongs() {
+        return songs;
     }
 }

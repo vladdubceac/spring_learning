@@ -1,14 +1,19 @@
 package md.vlad.springcourse;
 
-public class PopMusic implements Music{
-    private String song;
+import java.util.ArrayList;
+import java.util.List;
 
-    public void setSong(String song) {
-        this.song = song;
+public class PopMusic implements Music{
+    private List<String> songs = new ArrayList<>();
+
+    {
+        songs.add("Billie Jean");
+        songs.add("Beat it");
+        songs.add("Dragostea din tei");
     }
 
     @Override
-    public String getSong() {
-        return song!=null ? song : "Billie Jean";
+    public List<String> getSongs() {
+        return songs;
     }
 }
