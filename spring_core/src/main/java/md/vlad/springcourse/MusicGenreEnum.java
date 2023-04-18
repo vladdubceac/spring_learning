@@ -1,5 +1,5 @@
 package md.vlad.springcourse;
 
-public enum MusicGenre {
+public enum MusicGenreEnum {
     CLASSICAL, ROCK;
 }

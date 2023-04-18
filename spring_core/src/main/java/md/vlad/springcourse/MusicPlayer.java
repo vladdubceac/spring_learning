@@ -1,18 +1,20 @@
 package md.vlad.springcourse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
-@Component
+//@Component
 public class MusicPlayer {
     // dependency injection via field
-    private Music rockMusic;
-    private Music classicalMusic;
+//    private Music rockMusic;
+//    private Music classicalMusic;
+
+    private List<Music> musicList;
 
     @Value("${musicPlayer.name}")
     private String name;
@@ -20,11 +22,15 @@ public class MusicPlayer {
     @Value("${musicPlayer.volume}")
     private int volume;
 
-    @Autowired
-    public MusicPlayer(@Qualifier("rockMusic") Music rockMusic, @Qualifier("classicalMusic") Music classicalMusic) {
-        this.rockMusic = rockMusic;
-        this.classicalMusic = classicalMusic;
+    public MusicPlayer(List<Music> musicList){
+        this.musicList = new ArrayList<>(musicList);
     }
+
+//    @Autowired
+//    public MusicPlayer(@Qualifier("rockMusic") Music rockMusic, @Qualifier("classicalMusic") Music classicalMusic) {
+//        this.rockMusic = rockMusic;
+//        this.classicalMusic = classicalMusic;
+//    }
 
     // dependency injection via constructor
     //    @Autowired
@@ -55,17 +61,8 @@ public class MusicPlayer {
 //    }
 
     // IoC
-    public void playMusic(MusicGenre musicGenre) {
-        int randomNumber = new Random().nextInt(3);
-        String song;
-        if (MusicGenre.CLASSICAL == musicGenre) {
-            song = classicalMusic.getSongs().get(randomNumber);
-        } else if (MusicGenre.ROCK == musicGenre) {
-            song = rockMusic.getSongs().get(randomNumber);
-        } else {
-            System.out.println("Song not found for given genre : " + musicGenre);
-            return;
-        }
-        System.out.println("Playing : " + song);
+    public void playMusic() {
+        int randomNumber = new Random().nextInt(musicList.size());
+        System.out.println("Playing : " + musicList.get(randomNumber).getSong());
     }
 }
