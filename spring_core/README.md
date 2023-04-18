@@ -1,1 +1,2 @@
-# spring_learning
+# Learning Spring framework
+Fundamentals
