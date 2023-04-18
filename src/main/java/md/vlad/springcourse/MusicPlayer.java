@@ -31,10 +31,11 @@ public class MusicPlayer {
 
     // IoC
     public MusicPlayer(List<Music> musicList) {
+        this.musicList = new ArrayList<>(musicList);
     }
 
     public void setMusicList(List<Music> musicList) {
-        this.musicList = new ArrayList(musicList);
+        this.musicList = musicList;
     }
 
     public void playMusic(){

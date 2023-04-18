@@ -7,11 +7,12 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:musicPlayer.properties" />
+    <context:component-scan base-package="md.vlad.springcourse" />
+    <!--<context:property-placeholder location="classpath:musicPlayer.properties" />-->
 
-    <bean id="musicBean" class="md.vlad.springcourse.ClassicalMusic" init-method="doMyInit" destroy-method="doMyDestroy"
-    factory-method="getClassicalMusic">
-    </bean>
+    <!--<bean id="musicBean" class="md.vlad.springcourse.ClassicalMusic" init-method="doMyInit" destroy-method="doMyDestroy"-->
+    <!--factory-method="getClassicalMusic">-->
+    <!--</bean>-->
 
     <!--<bean id="classicalMusicBean" class="md.vlad.springcourse.ClassicalMusic">-->
         <!--<property name="song" value="${music.classical.song}" />-->

@@ -1,5 +1,8 @@
 package md.vlad.springcourse;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class RockMusic implements Music {
     private String song;
 
