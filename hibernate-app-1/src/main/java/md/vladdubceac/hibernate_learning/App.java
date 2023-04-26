@@ -80,7 +80,8 @@ public class App {
     }
 
     private static void addNewPersonAndNewItem(Session session, Person person, String itemName) {
-        Item newItem = new Item(itemName, person);
+//        Item newItem = new Item(itemName, person);
+        Item newItem = new Item(itemName);
         person.setItems(new ArrayList<>(Collections.singletonList(newItem)));
 
         session.save(person);
@@ -91,7 +92,8 @@ public class App {
     private static void addNewItems(Session session) {
         Person newItemOwner = session.get(Person.class, 2);
 
-        Item newItem = new Item("Item from Hibernate", newItemOwner);
+//        Item newItem = new Item("Item from Hibernate", newItemOwner);
+        Item newItem = new Item("Item from Hibernate");
 
         newItemOwner.getItems().add(newItem);
 
