@@ -50,7 +50,7 @@ public class App {
     private static void updateItemOwner(Session session, int itemId, int personId) {
         Item item = session.get(Item.class, itemId);
         item.getOwner().getItems().remove(item);
-        
+
         Person person = session.get(Person.class, personId);
 
         item.setOwner(person);
