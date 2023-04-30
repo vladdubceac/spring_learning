@@ -1,5 +1,6 @@
 package md.vladdubceac.spring_learning.controllers;
 
+import md.vladdubceac.spring_learning.dao.PersonDAO;
 import md.vladdubceac.spring_learning.models.Person;
 import md.vladdubceac.spring_learning.services.ItemService;
 import md.vladdubceac.spring_learning.services.PeopleService;
@@ -19,14 +20,19 @@ public class PeopleController {
     private final ItemService itemService;
 
     @Autowired
-    public PeopleController(PeopleService peopleService, ItemService itemService) {
+    private final PersonDAO personDAO;
+
+    @Autowired
+    public PeopleController(PeopleService peopleService, ItemService itemService, PersonDAO personDAO) {
         this.peopleService = peopleService;
         this.itemService = itemService;
+        this.personDAO = personDAO;
     }
 
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("people", peopleService.findAll());
+        personDAO.testNPlus1();
         return "people/index";
     }
 
