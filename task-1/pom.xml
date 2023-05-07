@@ -9,7 +9,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <title>task-1 Maven Webapp</title>
+  <!--<title>task-1 Maven Webapp</title>-->
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
