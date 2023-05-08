@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.util.HashSet;
 import java.util.List;
@@ -15,10 +16,13 @@ import java.util.Set;
 public class PersonDAO {
 
     private final EntityManagerFactory entityManagerFactory;
+    private final EntityManager entityManager;
 
     @Autowired
     public PersonDAO(EntityManagerFactory entityManagerFactory) {
+
         this.entityManagerFactory = entityManagerFactory;
+        this.entityManager = entityManagerFactory.createEntityManager();
     }
 
     @Transactional(readOnly = true)
@@ -30,7 +34,9 @@ public class PersonDAO {
 
     @Transactional(readOnly = true)
     public Person show(int id) {
-        Session session = entityManagerFactory.unwrap(Session.class);
+
+//        Session session = entityManagerFactory.unwrap(Session.class);
+        Session session = entityManager.unwrap(Session.class);
         return session.get(Person.class, id);
     }
 
@@ -59,7 +65,7 @@ public class PersonDAO {
 
     @Transactional(readOnly = true)
     public void testNPlus1() {
-        Session session = entityManagerFactory.unwrap(Session.class);
+        Session session = entityManager.unwrap(Session.class);
 
         // 1 Query
 //        List<Person> personList = session.createQuery("SELECT P FROM Person P", Person.class).getResultList();

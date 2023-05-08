@@ -1,9 +1,13 @@
 package md.vladdubceac.spring_learning.task_1.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+@Entity
+@Table(name = "book")
 public class Book {
     private long id;
 

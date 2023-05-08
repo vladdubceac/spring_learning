@@ -1,6 +1,5 @@
 package md.vladdubceac.spring_learning.task_1.controllers;
 
-import md.vladdubceac.spring_learning.task_1.dao.BookDAO;
 import md.vladdubceac.spring_learning.task_1.models.Book;
 import md.vladdubceac.spring_learning.task_1.models.Person;
 import md.vladdubceac.spring_learning.task_1.services.BookService;
